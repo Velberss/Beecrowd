@@ -37,11 +37,6 @@ public class Main {
                     entradasPar[j] = entradasPar[j + 1];
                     entradasPar[j + 1] = aux;
                 }
-            }
-        }
-
-        for (int i = 0; i < auxImpar - 1; i++) {
-            for (int j = 0; j < auxImpar - i - 1; j++) {
                 if (entradasImpar[j] < entradasImpar[j + 1]) {
                     aux = entradasImpar[j];
                     entradasImpar[j] = entradasImpar[j + 1];
@@ -58,5 +53,5 @@ public class Main {
         for (int i = 0; i < auxImpar; i++) {
             System.out.println(entradasImpar[i]);
         }
-    }
+    } 
 }
