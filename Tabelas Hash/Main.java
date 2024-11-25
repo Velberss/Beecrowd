@@ -15,7 +15,7 @@ public class Main {
 
             int m = Integer.parseInt(parts[0]);
             int c = Integer.parseInt(parts[1]);
-            System.out.println(m + "  " + c);
+            System.out.println(m + "" + c);
         }
     }
 }
