@@ -1,7 +1,7 @@
 package Testes;
 import java.util.Scanner;
 import java.io.IOException;
-public class Main {
+public class testes {
 
     public static void main(String[] args) throws IOException {
         
@@ -55,7 +55,3 @@ public class Main {
         }
     } 
 }
-
-
-
-//Lucas Sousa da Silva
