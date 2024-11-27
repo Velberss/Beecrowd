@@ -1,4 +1,5 @@
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class Main {
     public static void main(String[] args) {
@@ -40,5 +41,6 @@ public class Main {
             this.chave = chave;
             this.tabela = new ArrayList[chave];
         }
+        
     }
 }
