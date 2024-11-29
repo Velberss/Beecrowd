@@ -4,43 +4,53 @@ import java.util.stream.Collectors;
 public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        System.out.println("");
         int quantTestes = sc.nextInt();
-        sc.nextLine();
+        sc.nextLine(); 
 
-        while (quantTestes-- > 0) {
-            System.out.println("");
-            String input = sc.nextLine();
-            String[] parts = input.trim().split("\\s+");
+        for (int t = 1; t <= quantTestes; t++) {
+            String[] params = sc.nextLine().trim().split("\\s+");
+            int mMod = Integer.parseInt(params[0]);
+            String[] chaveStr = sc.nextLine().trim().split("\\s+");
+            List<Integer> chaves = Arrays.stream(chaveStr).map(Integer::parseInt).collect(Collectors.toList());
 
-            if (parts.length >= 2) {
-
-                int mMod = Integer.parseInt(parts[0]);
-                int cQuant = Integer.parseInt(parts[1]);
-
-                System.out.println(" " + mMod + " " + cQuant);
-
-                TabelaHash tabela = new TabelaHash(mMod);
-                List<Integer> chaves = Arrays.stream(input.trim().split(" ")).map(Integer::parseInt).collect(Collectors.toList());
-                for (int i = 0; i < chaves.size(); ++i) {
-                    tabela.adiciona(chaves.get(i));
-                }
-
-            } else {
-                System.out.println("Entrada inválida.");
+            TabelaHash tabela = new TabelaHash(mMod);
+            for (int chave : chaves) {
+                tabela.adiciona(chave);
             }
-            sc.close();
+            System.out.println("Teste " + t + ":");
+            tabela.exibirTabela();
+        }
+        sc.close();
+    }
+}
+
+class TabelaHash {
+    private int mod;
+    private List<Integer>[] tabela;
+
+    public TabelaHash(int mod) {
+        this.mod = mod;
+        this.tabela = new ArrayList[mod];
+        for (int i = 0; i < mod; i++) {
+            tabela[i] = new ArrayList<>();
         }
     }
 
-    public class TabelaHash {
-        private int chave;
-        private List<Integer>[] tabela;
-
-        public TabelaHash(int chave){
-            this.chave = chave;
-            this.tabela = new ArrayList[chave];
+    public void adiciona(Integer valor) {
+        int indice = valor % mod; 
+        tabela[indice].add(valor);
+    }
+    public void exibirTabela() {
+        for (int i = 0; i < tabela.length; i++) {
+            StringBuilder linha = new StringBuilder();
+            linha.append(i).append(" -> ");           
+            if (tabela[i] != null) {
+                for (Integer valor : tabela[i]) {
+                    linha.append(valor).append(" -> ");
+                }
+            }
+            linha.append("\\");
+            System.out.println(linha);
         }
-        
     }
 }

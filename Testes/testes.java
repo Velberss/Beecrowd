@@ -53,5 +53,7 @@ public class testes {
         for (int i = 0; i < auxImpar; i++) {
             System.out.println(entradasImpar[i]);
         }
+
+        sc.close();
     } 
 }
