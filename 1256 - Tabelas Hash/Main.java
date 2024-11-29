@@ -17,7 +17,6 @@ public class Main {
             for (int chave : chaves) {
                 tabela.adiciona(chave);
             }
-            System.out.println("Teste " + t + ":");
             tabela.exibirTabela();
         }
         sc.close();
