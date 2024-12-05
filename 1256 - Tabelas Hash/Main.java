@@ -7,19 +7,29 @@ public class Main {
         int quantTestes = sc.nextInt();
         sc.nextLine(); 
 
+        List<String> resultados = new ArrayList<>();
         for (int t = 1; t <= quantTestes; t++) {
             String[] params = sc.nextLine().trim().split("\\s+");
             int mMod = Integer.parseInt(params[0]);
             String[] chaveStr = sc.nextLine().trim().split("\\s+");
+            
             List<Integer> chaves = Arrays.stream(chaveStr).map(Integer::parseInt).collect(Collectors.toList());
 
             TabelaHash tabela = new TabelaHash(mMod);
             for (int chave : chaves) {
                 tabela.adiciona(chave);
             }
-            tabela.exibirTabela();
+            
+            resultados.add(tabela.obterTabela());
         }
         sc.close();
+    
+        for (int i = 0; i < resultados.size(); i++) {
+            System.out.print(resultados.get(i));
+            if (i < resultados.size() - 1) {
+                System.out.println(); 
+            }
+        }
     }
 }
 
@@ -39,17 +49,18 @@ class TabelaHash {
         int indice = valor % mod; 
         tabela[indice].add(valor);
     }
-    public void exibirTabela() {
+
+    public String obterTabela() {
+        StringBuilder sb = new StringBuilder();
         for (int i = 0; i < tabela.length; i++) {
-            StringBuilder linha = new StringBuilder();
-            linha.append(i).append(" -> ");           
+            sb.append(i).append(" -> ");
             if (tabela[i] != null) {
                 for (Integer valor : tabela[i]) {
-                    linha.append(valor).append(" -> ");
+                    sb.append(valor).append(" -> ");
                 }
             }
-            linha.append("\\");
-            System.out.println(linha);
+            sb.append("\\\n");
         }
+        return sb.toString();
     }
 }
