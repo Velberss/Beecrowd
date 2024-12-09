@@ -25,7 +25,7 @@ public class Main{
 
         Collections.sort(pares);
         Collections.sort(impares);
-
+        
         for(int y = 0; y < pares.size() ; y++) 
         System.out.println(pares.get(y));
         
