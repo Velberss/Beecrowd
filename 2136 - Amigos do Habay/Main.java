@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import java.util.Collections;
 
 public class Main {
     public static void main(String[] args) {
@@ -24,7 +25,20 @@ public class Main {
         }
         
         int valorNome = amigosYes.get(0).length();
-        System.out.println(valorNome);
+
+        Collections.sort(amigosYes);
+        Collections.sort(amigosNo);
+
+        for(int i =0; i< amigosYes.size();i++){
+            System.out.println(amigosYes.get(i));
+        }
+
+        for(int i =0; i< amigosNo.size();i++){
+            System.out.println(amigosNo.get(i));
+        }
+        
+        System.out.println("Amigo do Habay:");
+        System.out.println(amigosYes.get(0));
 
         sc.close();
     }
